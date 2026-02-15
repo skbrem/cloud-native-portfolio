@@ -1,0 +1,9 @@
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+- name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: ${{ secrets.arn:aws:iam::220147556579:role/GitHubAction-S3-Deploy-Role }}
+          aws-region: us-east-1
