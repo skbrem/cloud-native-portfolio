@@ -19,7 +19,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.arn:aws:iam::220147556579:role/GitHubAction-S3-Deploy-Role }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: af-south-1  # Your Cape Town region
 
       - name: Sync to S3
