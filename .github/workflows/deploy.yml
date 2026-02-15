@@ -25,3 +25,7 @@ jobs:
       - name: Sync to S3
         run: |
           aws s3 sync . s3://my-cloud-portfolio-2026 --delete --exclude ".git/*" --exclude ".github/*"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_ID }} --paths "/*"
