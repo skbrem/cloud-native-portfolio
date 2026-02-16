@@ -1,53 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sean Bremner | Cloud-Native Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sean Bremner | DevOps Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-  <header class="hero">
-    <img src="profile-pic.jpg" alt="Sean Bremner" class="profile-img">
-    
-    <div class="hero-text">
-      <h1>Sean Bremner</h1>
-      <h2>DevOps Engineer & Linux Specialist</h2>
-      <p>Welcome to my cloud-native portfolio, hosted serverlessly on AWS.</p>
-    </div>
-  </header>
+    <header>
+        <div class="container">
+            <h1>Sean Bremner 
+                <a href="https://github.com/skbrem" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                </a>
+            </h1>
+            <p class="subtitle">Future Red Hat DevOps Engineer | SAA-C03 Candidate</p>
+        </div>
+    </header>
 
-  <main class="container">
-    
-    <section class="about">
-      <h3>About Me</h3>
-      <p>I am an IT professional with a lifelong passion for building and repairing computers. With a decade of hands-on experience navigating Linux environments—proudly daily-driving Fedora—I am transitioning my deep foundational systems knowledge into modern cloud infrastructure and DevOps practices.</p>
-    </section>
+    <main class="container">
+        
+        <section class="terminal-card">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">~/projects</span>
+            </div>
+            <div class="terminal-body">
+                <h3>Projects</h3>
+                <p>Built a secure, serverless CI/CD pipeline using GitHub Actions (OIDC) to deploy this site to AWS S3 (af-south-1) with global Cloudflare edge caching and automated cache purging.</p>
+            </div>
+        </section>
 
-    <section class="goals">
-      <h3>Current Focus & Trajectory</h3>
-      <p>I am currently executing an intensive, full-time study plan to achieve my <strong>AWS Solutions Architect - Associate (SAA-C03)</strong> certification. My ultimate career objective is to join <strong>Red Hat</strong> as a DevOps Engineer, specifically contributing to their cutting-edge AI stacks.</p>
-    </section>
+        <section class="terminal-card">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">~/background</span>
+            </div>
+            <div class="terminal-body">
+                <h3>Profile</h3>
+                <ul>
+                    <li>33-year-old IT professional with a lifetime of computer repair and hardware experience.</li>
+                    <li>10 years of Linux expertise, currently daily-driving Fedora.</li>
+                    <li>Deepening knowledge in AWS architecture, CI/CD, and AI stacks.</li>
+                </ul>
+            </div>
+        </section>
 
-    <section class="projects">
-      <h3>Featured Architecture: This Website</h3>
-      <p>This portfolio is a live demonstration of my cloud and CI/CD capabilities. It features a fully automated pipeline built with <strong>GitHub Actions</strong> that deploys static assets directly to an Amazon S3 bucket in the Cape Town region (af-south-1). Content is distributed globally via <strong>CloudFront</strong>, utilizing strict Origin Access Control (OAC) to ensure least-privilege security.</p>
-    </section>
+        <section class="terminal-card">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">~/roadmap</span>
+            </div>
+            <div class="terminal-body">
+                <h3>Certification Goal</h3>
+                <p>Currently engaged in a full-time 3-month study track to achieve the <strong>AWS Solutions Architect - Associate (SAA-C03)</strong> certification by April 2026.</p>
+            </div>
+        </section>
 
-    <section class="links">
-      <h3>Resumes & Documents</h3>
-      <div class="button-group">
-        <a href="sean-bremner.pdf" target="_blank" class="btn">View Full CV (PDF)</a>
-        <a href="cv.html" class="btn btn-secondary">View HTML CV</a>
-      </div>
-    </section>
+    </main>
 
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Sean Bremner. Automatically deployed via GitHub Actions.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2026 Sean Bremner | Hosted on AWS S3 & Cloudflare</p>
+    </footer>
 
 </body>
 </html>

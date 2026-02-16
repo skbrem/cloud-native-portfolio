@@ -1,147 +1,132 @@
-/* Clean, modern base font */
+/* Terminal Theme Colors from the Bash Logo */
+:root {
+    --bg-white: #ffffff;
+    --terminal-black: #1e2227; /* Dark slate/black from logo */
+    --terminal-text: #ffffff;
+    --accent-green: #4db33d;   /* The green from the bash underscore */
+    --font-main: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
+    background-color: var(--bg-white);
+    color: var(--terminal-black);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    padding: 2rem 0;
 }
 
-/* Flexbox for a split Hero Section (Text Left, Image Right) */
-.hero {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  text-align: left;
-  padding: 3rem 2rem;
-  background-color: #ffffff;
-  border-bottom: 4px solid #CC0000; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  max-width: 800px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.hero-text {
-  max-width: 70%;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  color: #1a1a1a;
-  margin-bottom: 0.25rem;
-  margin-top: 0;
-}
-
-.hero h2 {
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: #666;
-  margin-top: 0;
-}
-
-/* Smaller, Right-Aligned Profile Picture */
-.profile-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #f0f0f0;
-  margin-left: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-  transform: scale(1.05);
-}
-
-/* Container for main content */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  box-sizing: border-box;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-section {
-  background: #ffffff;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
-h3 {
-  color: #CC0000;
-  border-bottom: 2px solid #f0f0f0;
-  padding-bottom: 0.5rem;
-  margin-top: 0;
-}
-
-/* Button Styling */
-.button-group {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #CC0000;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #990000;
-}
-
-.btn-secondary {
-  background-color: #333333;
-}
-
-.btn-secondary:hover {
-  background-color: #1a1a1a;
-}
-
-/* Footer Styling */
-footer {
-  text-align: center;
-  padding: 2rem;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-  .hero {
-    flex-direction: column-reverse; /* Stacks image on top of text */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.github-link {
+    color: var(--terminal-black);
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+}
+
+.github-link:hover {
+    color: var(--accent-green);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+/* Terminal Card Styling */
+.terminal-card {
+    background-color: var(--terminal-black);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.terminal-header {
+    background-color: #333;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+}
+
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
+.terminal-title {
+    color: #aaa;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.terminal-body {
+    padding: 2rem;
+    color: var(--terminal-text);
+}
+
+.terminal-body h3 {
+    color: var(--accent-green);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.terminal-body h3::before {
+    content: "> ";
+}
+
+.terminal-body ul {
+    list-style: none;
+}
+
+.terminal-body li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.terminal-body li::before {
+    content: "$";
+    color: var(--accent-green);
+    position: absolute;
+    left: 0;
+}
+
+/* Footer */
+footer {
     text-align: center;
-  }
-  
-  .hero-text {
-    max-width: 100%;
-  }
-  
-  .profile-img {
-    margin-left: 0;
-    margin-bottom: 1.5rem;
-  }
-  
-  .button-group {
-    flex-direction: column;
-  }
-  
-  .btn {
-    text-align: center;
-  }
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    color: #888;
 }
