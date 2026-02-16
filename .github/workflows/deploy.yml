@@ -1,31 +1,39 @@
-name: Secure Edge Deployment
+name: Deploy to S3 and Purge Cloudflare Cache
 
 on:
   push:
     branches:
-      - main # Only when code is pushed to the main branch
+      - main
 
+# MUST include these permissions for OIDC to work
 permissions:
-  id-token: write   # This is required for requesting the JWT
-  contents: read    # This is required for actions/checkout
+  id-token: write   # Required to request the JWT token from GitHub
+  contents: read    # Required for actions/checkout
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Configure AWS Credentials
+      - name: Configure AWS Credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: af-south-1  # Your Cape Town region
+          role-to-assume: arn:aws:iam::220147556579:role/GitHubAction-S3-Deploy-Role
+          aws-region: af-south-1
 
-      - name: Sync to S3
+      - name: Deploy to S3 Bucket
         run: |
-          aws s3 sync . s3://my-cloud-portfolio-2026 --delete --exclude ".git/*" --exclude ".github/*"
+          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --delete --exclude ".git/*" --exclude ".github/*"
 
-      - name: Invalidate CloudFront
+      - name: Purge Cloudflare Cache
+        env:
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_ID }} --paths "/*"
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+               -H "Content-Type: application/json" \
+               --data '{"purge_everything":true}'
