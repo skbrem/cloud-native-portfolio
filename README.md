@@ -1,26 +1,26 @@
 # Cloud-Native Portfolio & CI/CD Pipeline
 
-This repository hosts my personal portfolio, serving as a hands-on demonstration of Cloud Engineering and DevOps principles. It features a serverless architecture optimized for the **af-south-1 (Cape Town)** region, delivered globally via **Cloudflare**.
+A secure, high-performance personal portfolio demonstrating modern DevOps practices and cloud architecture. 
 
-## 🏗️ Architecture Overview
+## 🏗️ The Architecture
+The site is hosted on **AWS** and accelerated by **Cloudflare**, utilizing a "Keyless" security model.
 
-The project follows a "Keyless" security model, utilizing **Identity Federation** between GitHub and AWS to eliminate the need for long-lived IAM credentials.
+* **Storage:** AWS S3 (Static Website Hosting) located in the **af-south-1 (Cape Town)** region.
+* **Delivery:** Cloudflare CDN for global edge caching, SSL/TLS termination, and CNAME flattening for the root domain.
+* **Security (OIDC):** Instead of storing permanent AWS Access Keys in GitHub, it uses **OpenID Connect (OIDC)**. GitHub Actions assumes a temporary IAM Role.
+* **Security (Least Privilege):** The S3 bucket is locked down with a policy that allows traffic *only* from Cloudflare’s IP ranges.
 
-```mermaid
-graph LR
-    A[Local Fedora Dev] -- git push --> B(GitHub Repository)
-    subgraph GitHub Actions
-    B --> C{OIDC Auth}
-    C -- Temporary Token --> D[AWS IAM Role]
-    D --> E[S3 Sync]
-    E --> F[Cloudflare Purge]
-    end
-    subgraph AWS (af-south-1)
-    E --> G[(S3 Bucket: bremner.me)]
-    end
-    subgraph Edge Network
-    F --> H[Cloudflare Edge Cache]
-    G -.-> H
-    H --> I((End User))
-    end
+## 🛠️ Tech Stack
+* **Development:** Created on **Fedora Linux**..
+* **Cloud Provider:** Amazon Web Services.
+* **Edge Network:** Cloudflare.
+* **CI/CD:** GitHub Actions (YAML).
+* **Design:** Custom HTML5/CSS3. (Had some help from AI with this)
+
+## 🚀 The Automated Pipeline
+Every time a change is pushed to the `main` branch, the following automated sequence occurs:
+
+1.  **Authentication:** GitHub Actions initiates an OIDC handshake with AWS IAM.
+2.  **S3 Sync:** The pipeline uses the AWS CLI to sync the repository to the `bremner.me` bucket, ensuring a clean mirror of the code.
+3.  **Cache Invalidation:** The pipeline sends a secure `POST` request to the Cloudflare API to purge the edge cache. This ensures that updates are visible globally at [https://bremner.me](https://bremner.me) within seconds.
 
