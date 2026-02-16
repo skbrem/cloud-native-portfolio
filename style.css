@@ -1,13 +1,29 @@
-/* GNOME Terminal Theme - Inspired by Adwaita and the Bash logo */
+/* GNOME/Adwaita Terminal Theme 
+   Designed for: bremner.me 
+*/
+
 :root {
-    --bg-white: #f6f5f4;        /* Classic GNOME light background */
-    --terminal-black: #1e2227;  /* Deep dark slate from your logo */
-    --terminal-text: #eeeeec;   /* Light gray terminal text */
-    --accent-green: #4db33d;    /* The green from the bash logo underscore */
-    --gnome-header: #2d2d2d;    /* Dark HeaderBar color */
+    /* Light Mode Variables (Default) */
+    --bg-page: #f6f5f4;         /* GNOME light background */
+    --text-main: #2e3436;       /* Adwaita dark grey text */
+    --terminal-black: #1e2227;  /* Deep dark slate from Bash logo */
+    --terminal-text: #eeeeec;   /* Light grey terminal text */
+    --accent-green: #4db33d;    /* Bash logo underscore green */
+    --gnome-header: #2d2d2d;    /* GNOME HeaderBar color */
     --font-main: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
+/* Automatic Dark Mode Detection */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-page: #1a1a1a;        /* Deep charcoal for the page */
+        --text-main: #eeeeec;      /* Light text for dark backgrounds */
+        --terminal-black: #000000; /* Pure black cards for depth */
+        --gnome-header: #121212;   /* Inset header bar */
+    }
+}
+
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -15,11 +31,12 @@
 }
 
 body {
-    background-color: var(--bg-white);
-    color: var(--terminal-black);
+    background-color: var(--bg-page);
+    color: var(--text-main);
     font-family: var(--font-main);
     line-height: 1.6;
     padding: 3rem 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -41,12 +58,13 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    color: #2e3436;
+    color: var(--text-main);
 }
 
 .github-link {
-    color: var(--terminal-black);
+    color: var(--text-main);
     font-size: 1.8rem;
+    text-decoration: none;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
@@ -56,18 +74,18 @@ h1 {
 }
 
 .subtitle {
-    font-size: 1rem;
-    color: #5e2750; /* Subtle hint of Fedora/Ubuntu mix or keep it neutral gray */
-    opacity: 0.8;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    opacity: 0.7;
     margin-top: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* GNOME Terminal Window Styling */
+/* GNOME Terminal Window */
 .terminal-card {
     background-color: var(--terminal-black);
-    border-radius: 6px; /* GNOME windows have slight rounding */
+    border-radius: 6px;
     overflow: hidden;
     margin-bottom: 2.5rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 20px 40px rgba(0,0,0,0.1);
@@ -79,11 +97,10 @@ h1 {
     padding: 8px 16px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* GNOME often spaces title and buttons */
     border-bottom: 1px solid #000;
 }
 
-/* GNOME Style Buttons (usually on the right) */
+/* GNOME Style Close Icon Placeholder */
 .terminal-header::after {
     content: "✕";
     color: #888;
@@ -98,10 +115,8 @@ h1 {
     font-weight: 500;
     flex-grow: 1;
     text-align: center;
+    opacity: 0.8;
 }
-
-/* The three dots are less prominent in GNOME or replaced by title text */
-.dot { display: none; } 
 
 .terminal-body {
     padding: 2rem;
@@ -115,6 +130,7 @@ h1 {
     font-weight: 700;
 }
 
+/* The [user@host ~]$ Prompt Decorator */
 .terminal-body h3::before {
     content: "[sean@fedora ~]$ ";
     color: #888;
@@ -122,19 +138,26 @@ h1 {
     font-weight: 400;
 }
 
-.terminal-body p, .terminal-body li {
+.terminal-body p {
+    margin-bottom: 1rem;
     font-size: 1.05rem;
-    margin-bottom: 0.8rem;
 }
 
 .terminal-body ul {
     list-style: none;
 }
 
+.terminal-body li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
 .terminal-body li::before {
-    content: "➜ ";
+    content: "➜";
     color: var(--accent-green);
-    margin-right: 10px;
+    position: absolute;
+    left: 0;
 }
 
 /* Footer */
@@ -144,4 +167,18 @@ footer {
     padding-bottom: 2rem;
     font-size: 0.85rem;
     color: #949494;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    .terminal-body {
+        padding: 1.5rem;
+    }
+    .terminal-body h3::before {
+        display: block; /* Stack prompt on mobile */
+        margin-bottom: 5px;
+    }
 }
