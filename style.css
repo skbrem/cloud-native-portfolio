@@ -1,8 +1,69 @@
+/* Clean, modern base font */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Flexbox for a split Hero Section (Text Left, Image Right) */
+.hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  padding: 3rem 2rem;
+  background-color: #ffffff;
+  border-bottom: 4px solid #CC0000; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.hero-text {
+  max-width: 70%;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+  margin-top: 0;
+}
+
+.hero h2 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #666;
+  margin-top: 0;
+}
+
+/* Smaller, Right-Aligned Profile Picture */
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f0f0f0;
+  margin-left: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
 /* Container for main content */
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
+  box-sizing: border-box;
 }
 
 section {
@@ -14,7 +75,7 @@ section {
 }
 
 h3 {
-  color: #CC0000; /* Red Hat-inspired accent color */
+  color: #CC0000;
   border-bottom: 2px solid #f0f0f0;
   padding-bottom: 0.5rem;
   margin-top: 0;
@@ -25,6 +86,7 @@ h3 {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .btn {
@@ -56,4 +118,30 @@ footer {
   padding: 2rem;
   color: #666;
   font-size: 0.9rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column-reverse; /* Stacks image on top of text */
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero-text {
+    max-width: 100%;
+  }
+  
+  .profile-img {
+    margin-left: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .btn {
+    text-align: center;
+  }
 }
