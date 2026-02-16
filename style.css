@@ -1,50 +1,59 @@
-/* Clean, modern base font */
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
+/* Container for main content */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-/* Flexbox for centering the Hero Section */
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 4rem 2rem;
-  background-color: #ffffff;
-  /* A subtle red accent line to anchor the design */
-  border-bottom: 4px solid #CC0000; 
+section {
+  background: #ffffff;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Circular Profile Picture */
-.profile-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #f0f0f0;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+h3 {
+  color: #CC0000; /* Red Hat-inspired accent color */
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  margin-top: 0;
 }
 
-.profile-img:hover {
-  transform: scale(1.05);
+/* Button Styling */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  color: #1a1a1a;
-  margin-bottom: 0.5rem;
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #CC0000;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-.hero h2 {
-  font-size: 1.25rem;
-  font-weight: 400;
+.btn:hover {
+  background-color: #990000;
+}
+
+.btn-secondary {
+  background-color: #333333;
+}
+
+.btn-secondary:hover {
+  background-color: #1a1a1a;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 2rem;
   color: #666;
+  font-size: 0.9rem;
 }

@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Portfolio | Cape Town</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sean Bremner | Cloud-Native Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="card">
-        <h1>Hello from Cape Town! 🇿🇦</h1>
-        <p>I am a Junior Cloud & Linux Enthusiast transitioning into DevOps.</p>
-        <p>This site is built on <strong>AWS S3 & CloudFront</strong> and deployed automatically via <strong>GitHub Actions</strong>.</p>
-        
-        <hr>
-
-        <div class="cv-container">
-            <p>Interested in working together?</p>
-            <a href="sean-bremner.pdf" class="download-btn" download>
-                <span class="icon">⬇</span> Download My CV (PDF)
-            </a>
-        </div>
+  <header class="hero">
+    <img src="profile-pic.jpg" alt="Sean Bremner" class="profile-img">
+    
+    <div class="hero-text">
+      <h1>Sean Bremner</h1>
+      <h2>DevOps Engineer & Linux Specialist</h2>
+      <p>Welcome to my cloud-native portfolio, hosted serverlessly on AWS.</p>
     </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="about">
+      <h3>About Me</h3>
+      <p>I am an IT professional with a lifelong passion for building and repairing computers. With a decade of hands-on experience navigating Linux environments—proudly daily-driving Fedora—I am transitioning my deep foundational systems knowledge into modern cloud infrastructure and DevOps practices.</p>
+    </section>
+
+    <section class="goals">
+      <h3>Current Focus & Trajectory</h3>
+      <p>I am currently executing an intensive, full-time study plan to achieve my <strong>AWS Solutions Architect - Associate (SAA-C03)</strong> certification. My ultimate career objective is to join <strong>Red Hat</strong> as a DevOps Engineer, specifically contributing to their cutting-edge AI stacks.</p>
+    </section>
+
+    <section class="projects">
+      <h3>Featured Architecture: This Website</h3>
+      <p>This portfolio is a live demonstration of my cloud and CI/CD capabilities. It features a fully automated pipeline built with <strong>GitHub Actions</strong> that deploys static assets directly to an Amazon S3 bucket in the Cape Town region (af-south-1). Content is distributed globally via <strong>CloudFront</strong>, utilizing strict Origin Access Control (OAC) to ensure least-privilege security.</p>
+    </section>
+
+    <section class="links">
+      <h3>Resumes & Documents</h3>
+      <div class="button-group">
+        <a href="sean-bremner.pdf" target="_blank" class="btn">View Full CV (PDF)</a>
+        <a href="cv.html" class="btn btn-secondary">View HTML CV</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Sean Bremner. Automatically deployed via GitHub Actions.</p>
+  </footer>
 
 </body>
 </html>
