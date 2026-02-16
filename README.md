@@ -11,11 +11,11 @@ The site is hosted on **AWS** and accelerated by **Cloudflare**, utilizing a "Ke
 * **Security (Least Privilege):** The S3 bucket is locked down with a policy that allows traffic *only* from Cloudflare’s IP ranges.
 
 ## 🛠️ Tech Stack
-* **Development:** Created on **Fedora Linux**..
+* **Development:** Created on **Fedora Linux**.
 * **Cloud Provider:** Amazon Web Services.
 * **Edge Network:** Cloudflare.
 * **CI/CD:** GitHub Actions (YAML).
-* **Design:** Custom HTML5/CSS3. (Had some help from AI with this)
+* **Design:** Custom HTML5/CSS3. (Had a lot of help from AI with this)
 
 ## 🚀 The Automated Pipeline
 Every time a change is pushed to the `main` branch, the following automated sequence occurs:
