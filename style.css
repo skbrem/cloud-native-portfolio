@@ -1,9 +1,10 @@
-/* Terminal Theme Colors from the Bash Logo */
+/* GNOME Terminal Theme - Inspired by Adwaita and the Bash logo */
 :root {
-    --bg-white: #ffffff;
-    --terminal-black: #1e2227; /* Dark slate/black from logo */
-    --terminal-text: #ffffff;
-    --accent-green: #4db33d;   /* The green from the bash underscore */
+    --bg-white: #f6f5f4;        /* Classic GNOME light background */
+    --terminal-black: #1e2227;  /* Deep dark slate from your logo */
+    --terminal-text: #eeeeec;   /* Light gray terminal text */
+    --accent-green: #4db33d;    /* The green from the bash logo underscore */
+    --gnome-header: #2d2d2d;    /* Dark HeaderBar color */
     --font-main: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
@@ -18,78 +19,89 @@ body {
     color: var(--terminal-black);
     font-family: var(--font-main);
     line-height: 1.6;
-    padding: 2rem 0;
+    padding: 3rem 0;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
 }
 
-/* Header Styling */
+/* Header Section */
 header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
+    color: #2e3436;
 }
 
 .github-link {
     color: var(--terminal-black);
     font-size: 1.8rem;
-    transition: color 0.3s ease;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .github-link:hover {
     color: var(--accent-green);
+    transform: scale(1.1);
 }
 
 .subtitle {
-    font-size: 1.1rem;
-    color: #555;
+    font-size: 1rem;
+    color: #5e2750; /* Subtle hint of Fedora/Ubuntu mix or keep it neutral gray */
+    opacity: 0.8;
     margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Terminal Card Styling */
+/* GNOME Terminal Window Styling */
 .terminal-card {
     background-color: var(--terminal-black);
-    border-radius: 8px;
+    border-radius: 6px; /* GNOME windows have slight rounding */
     overflow: hidden;
-    margin-bottom: 2rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 20px 40px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .terminal-header {
-    background-color: #333;
-    padding: 10px 15px;
+    background-color: var(--gnome-header);
+    padding: 8px 16px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between; /* GNOME often spaces title and buttons */
+    border-bottom: 1px solid #000;
 }
 
-.dot {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
+/* GNOME Style Buttons (usually on the right) */
+.terminal-header::after {
+    content: "✕";
+    color: #888;
+    font-size: 12px;
+    font-family: sans-serif;
+    cursor: default;
 }
-
-.red { background-color: #ff5f56; }
-.yellow { background-color: #ffbd2e; }
-.green { background-color: #27c93f; }
 
 .terminal-title {
-    color: #aaa;
-    font-size: 0.8rem;
-    margin-left: 10px;
+    color: #eeeeec;
+    font-size: 0.85rem;
+    font-weight: 500;
+    flex-grow: 1;
+    text-align: center;
 }
+
+/* The three dots are less prominent in GNOME or replaced by title text */
+.dot { display: none; } 
 
 .terminal-body {
     padding: 2rem;
@@ -98,36 +110,38 @@ h1 {
 
 .terminal-body h3 {
     color: var(--accent-green);
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .terminal-body h3::before {
-    content: "> ";
+    content: "[sean@fedora ~]$ ";
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.terminal-body p, .terminal-body li {
+    font-size: 1.05rem;
+    margin-bottom: 0.8rem;
 }
 
 .terminal-body ul {
     list-style: none;
 }
 
-.terminal-body li {
-    margin-bottom: 0.8rem;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
 .terminal-body li::before {
-    content: "$";
+    content: "➜ ";
     color: var(--accent-green);
-    position: absolute;
-    left: 0;
+    margin-right: 10px;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 4rem;
-    font-size: 0.9rem;
-    color: #888;
+    margin-top: 5rem;
+    padding-bottom: 2rem;
+    font-size: 0.85rem;
+    color: #949494;
 }
-
