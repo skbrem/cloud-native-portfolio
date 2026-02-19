@@ -1,146 +1,139 @@
-/* GNOME/Adwaita Terminal Theme 
-   Designed for: bremner.me 
-*/
-
+/* GNOME / Fedora Aesthetic */
 :root {
-    /* Light Mode Variables (Default) */
-    --bg-page: #f6f5f4;         /* GNOME light background */
-    --text-main: #2e3436;       /* Adwaita dark grey text */
-    --terminal-black: #1e2227;  /* Deep dark slate from Bash logo */
-    --terminal-text: #eeeeec;   /* Light grey terminal text */
-    --accent-green: #4db33d;    /* Bash logo underscore green */
-    --gnome-header: #2d2d2d;    /* GNOME HeaderBar color */
-    --font-main: 'JetBrains Mono', 'Fira Code', monospace;
+    --workspace-bg: #f6f5f4;    /* Light GNOME background */
+    --terminal-bg: #1e1e1e;     /* GNOME Terminal dark background */
+    --header-bg: #2d2d2d;       /* Adwaita dark header bar */
+    --text-main: #eeeeec;       /* Light terminal text */
+    --text-dark: #2e3436;       /* Text for the white workspace */
+    --terminal-green: #26a269;   /* GNOME success green */
+    --gnome-blue: #3584e4;      /* Standard GNOME blue */
+    --border-color: #d6d6d6;
 }
 
-/* Automatic Dark Mode Detection */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-page: #1a1a1a;        /* Deep charcoal for the page */
-        --text-main: #eeeeec;      /* Light text for dark backgrounds */
-        --terminal-black: #000000; /* Pure black cards for depth */
-        --gnome-header: #121212;   /* Inset header bar */
-    }
-}
-
-/* Global Styles */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    background-color: var(--bg-page);
-    color: var(--text-main);
-    font-family: var(--font-main);
+    background-color: var(--workspace-bg);
+    color: var(--text-dark);
+    font-family: 'Cantarell', 'Segoe UI', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
-    padding: 3rem 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 40px 20px;
 }
 
 .container {
     max-width: 850px;
     margin: 0 auto;
-    padding: 0 1.5rem;
 }
 
-/* Header Section */
+/* Header Area */
 header {
-    text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
 }
 
-h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
+header h1 {
+    font-size: 2.4rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 15px;
-    color: var(--text-main);
+    gap: 20px;
+    color: #1c2023;
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-links a {
+    text-decoration: none !important;
 }
 
 .github-link {
-    color: var(--text-main);
+    color: var(--text-dark);
     font-size: 1.8rem;
-    text-decoration: none;
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition: color 0.2s;
 }
 
 .github-link:hover {
-    color: var(--accent-green);
-    transform: scale(1.1);
+    color: var(--gnome-blue);
+}
+
+/* GNOME Style CV Button (Pill shape common in GTK4) */
+.btn-download {
+    background-color: var(--gnome-blue);
+    color: white !important;
+    padding: 6px 16px;
+    border-radius: 999px; /* Pill shape */
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-download:hover {
+    background-color: #1c71d8;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .subtitle {
-    font-size: 0.95rem;
-    color: var(--text-main);
-    opacity: 0.7;
-    margin-top: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* GNOME Terminal Window */
-.terminal-card {
-    background-color: var(--terminal-black);
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 20px 40px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255,255,255,0.05);
-}
-
-.terminal-header {
-    background-color: var(--gnome-header);
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #000;
-}
-
-/* GNOME Style Close Icon Placeholder */
-.terminal-header::after {
-    content: "✕";
-    color: #888;
-    font-size: 12px;
-    font-family: sans-serif;
-    cursor: default;
-}
-
-.terminal-title {
-    color: #eeeeec;
-    font-size: 0.85rem;
-    font-weight: 500;
-    flex-grow: 1;
-    text-align: center;
-    opacity: 0.8;
-}
-
-.terminal-body {
-    padding: 2rem;
-    color: var(--terminal-text);
-}
-
-.terminal-body h3 {
-    color: var(--accent-green);
-    margin-bottom: 1.2rem;
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-/* The [user@host ~]$ Prompt Decorator */
-.terminal-body h3::before {
-    content: "[sean@fedora ~]$ ";
-    color: #888;
-    font-size: 0.9rem;
+    color: #5e5c64;
+    font-size: 1.2rem;
     font-weight: 400;
 }
 
-.terminal-body p {
-    margin-bottom: 1rem;
-    font-size: 1.05rem;
+/* GNOME Terminal Card */
+.terminal-card {
+    background-color: var(--terminal-bg);
+    color: var(--text-main);
+    border-radius: 8px; /* Slightly rounded like GTK4 windows */
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.terminal-header {
+    background-color: var(--header-bg);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+/* Removed Colored Dots - GNOME Terminal uses a cleaner header */
+.terminal-title {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #d6d6d6;
+    margin: 0 auto; /* Centers the title like GNOME windows */
+}
+
+.terminal-body {
+    padding: 24px;
+}
+
+.terminal-body h3 {
+    color: var(--terminal-green);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    text-transform: lowercase;
+}
+
+.terminal-body h3::before {
+    content: "[ ";
+}
+
+.terminal-body h3::after {
+    content: " ]";
 }
 
 .terminal-body ul {
@@ -148,14 +141,14 @@ h1 {
 }
 
 .terminal-body li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 10px;
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 20px;
 }
 
 .terminal-body li::before {
-    content: "➜";
-    color: var(--accent-green);
+    content: "$";
+    color: var(--terminal-green);
     position: absolute;
     left: 0;
 }
@@ -163,23 +156,12 @@ h1 {
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 5rem;
-    padding-bottom: 2rem;
+    margin-top: 60px;
+    color: #9a9996;
     font-size: 0.85rem;
-    color: #949494;
 }
 
-/* Mobile Responsiveness */
+/* Responsive */
 @media (max-width: 600px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-    .terminal-body {
-        padding: 1.5rem;
-    }
-    .terminal-body h3::before {
-        display: block; /* Stack prompt on mobile */
-        margin-bottom: 5px;
-    }
+    header h1 { font-size: 1.8rem; }
 }
-
