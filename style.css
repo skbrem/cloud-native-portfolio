@@ -145,6 +145,7 @@ header h1 {
     align-items: center;
     padding: 0 8px;
     gap: 2px;
+    margin-left: auto;
 }
 
 .terminal-btn {
