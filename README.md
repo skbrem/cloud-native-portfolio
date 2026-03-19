@@ -20,7 +20,8 @@ The site is hosted on **AWS** and accelerated by **Cloudflare**, utilizing a "Ke
 ## 🚀 The Automated Pipeline
 Every time a change is pushed to the `main` branch, the following automated sequence occurs:
 
-1.  **Authentication:** GitHub Actions initiates an OIDC handshake with AWS IAM.
-2.  **S3 Sync:** The pipeline uses the AWS CLI to sync the repository to the `bremner.me` bucket, ensuring a clean mirror of the code.
-3.  **Cache Invalidation:** The pipeline sends a secure `POST` request to the Cloudflare API to purge the edge cache. This ensures that updates are visible globally at [https://bremner.me](https://bremner.me) within seconds.
+1. **Creation** The changes are first made on my local machine, pushed to my Codeberg repo, and then mirrored to github
+2. **Authentication:** GitHub Actions initiates an OIDC handshake with AWS IAM.
+3. **S3 Sync:** The pipeline uses the AWS CLI to sync the repository to the `bremner.me` bucket, ensuring a clean mirror of the code.
+4. **Cache Invalidation:** The pipeline sends a secure `POST` request to the Cloudflare API to purge the edge cache. This ensures that updates are visible globally at [https://bremner.me](https://bremner.me) within seconds.
 
